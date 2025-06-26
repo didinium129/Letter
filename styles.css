@@ -1,0 +1,653 @@
+/* Import vintage-style fonts */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+
+/* Reset and Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Crimson Text', serif;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Vintage Background */
+.vintage-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(120, 80, 60, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(139, 115, 85, 0.1) 0%, transparent 50%),
+        linear-gradient(135deg, #f4f1e8 0%, #e8dcc6 100%);
+    z-index: -1;
+}
+
+/* Main Envelope */
+.vintage-envelope {
+    position: relative;
+    width: 520px;
+    height: 360px;
+    background: 
+        linear-gradient(135deg, #faf8f3 0%, #f2eee3 100%);
+    border: 2px solid #d4c4a8;
+    border-radius: 8px;
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transform: rotate(-1deg);
+    transition: all 0.8s ease;
+}
+
+.vintage-envelope:hover {
+    transform: rotate(0deg) scale(1.02);
+}
+
+/* Envelope expansion when letter opens */
+.vintage-envelope.letter-opened {
+    height: 700px;
+    width: 600px;
+    transform: rotate(0deg);
+    border-radius: 12px;
+}
+
+/* Postal Elements */
+.postal-elements {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 3;
+}
+
+.postmark {
+    position: absolute;
+    top: -10px;
+    right: 80px;
+    width: 100px;
+    height: 100px;
+    border: 3px solid #8b7355;
+    border-radius: 50%;
+    background: rgba(139, 115, 85, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(15deg);
+}
+
+.postmark-inner {
+    text-align: center;
+    color: #8b7355;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.postmark-date {
+    font-size: 8px;
+    margin-bottom: 2px;
+}
+
+.stamp {
+    width: 60px;
+    height: 80px;
+    background: 
+        linear-gradient(135deg, #c4a574 0%, #a68b5b 100%);
+    border: 2px solid #8b7355;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #f4f1e8;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.stamp::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 3px,
+        #8b7355 3px,
+        #8b7355 4px
+    );
+    border-radius: 4px;
+    z-index: -1;
+}
+
+.stamp-heart {
+    font-size: 24px;
+    color: #d4a574;
+    margin-bottom: 4px;
+}
+
+.stamp-value {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Address Section */
+.address-section {
+    position: absolute;
+    top: 120px;
+    left: 60px;
+    z-index: 2;
+}
+
+.address-to {
+    font-family: 'Crimson Text', serif;
+    color: #5d4e37;
+    line-height: 1.6;
+}
+
+.address-label {
+    font-style: italic;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #8b7355;
+}
+
+.address-name {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    font-family: 'Dancing Script', cursive;
+}
+
+.address-line {
+    font-size: 16px;
+    font-style: italic;
+    margin-bottom: 2px;
+}
+
+/* Vintage Flap */
+.vintage-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: 
+        linear-gradient(135deg, #d4c4a8 0%, #c4a574 50%, #b8956c 100%);
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    z-index: 4;
+    transition: transform 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transform-origin: top center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.wax-seal {
+    position: absolute;
+    left: 50%;
+    bottom: -35px;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 70px;
+    background: 
+        radial-gradient(circle, #8b4513 0%, #654321 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 
+        0 8px 16px rgba(0, 0, 0, 0.3),
+        inset 0 -4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 5;
+}
+
+.seal-heart {
+    color: #d4a574;
+    font-size: 32px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Letter Content */
+.vintage-letter-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(135deg, #fdfcf8 0%, #f8f4ee 100%);
+    opacity: 0;
+    transition: opacity 1s ease;
+    padding: 60px 50px 40px 50px;
+    overflow-y: auto;
+    transform: scaleY(0);
+    transform-origin: top center;
+}
+
+.vintage-letter-content.unfolding {
+    animation: unfoldLetter 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    overflow-y: visible;
+}
+
+.vintage-letter-content.letter-opened {
+    padding: 80px 60px 50px 60px;
+    overflow-y: visible;
+}
+
+@keyframes unfoldLetter {
+    0% {
+        transform: scaleY(0);
+        opacity: 0;
+    }
+    40% {
+        transform: scaleY(0.3);
+        opacity: 0.3;
+    }
+    70% {
+        transform: scaleY(0.8);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+}
+
+/* Letter Steps - adjust spacing for taller letter */
+.letter-step {
+    display: none;
+    animation: fadeInVintage 0.8s ease;
+    min-height: 500px;
+}
+
+.letter-step.active {
+    display: block;
+}
+
+@keyframes fadeInVintage {
+    from { 
+        opacity: 0; 
+        transform: translateY(30px) scale(0.98);
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Letter Header */
+.letter-header {
+    text-align: right;
+    margin-bottom: 30px;
+}
+
+.letter-date {
+    font-family: 'Crimson Text', serif;
+    font-style: italic;
+    color: #8b7355;
+    font-size: 14px;
+}
+
+/* Letter Typography */
+.letter-greeting {
+    font-family: 'Dancing Script', cursive;
+    font-size: 32px;
+    color: #5d4e37;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.letter-text {
+    font-family: 'Crimson Text', serif;
+    font-size: 16px;
+    color: #5d4e37;
+    line-height: 1.8;
+    margin-bottom: 16px;
+    font-style: italic;
+}
+
+.letter-question {
+    font-family: 'Crimson Text', serif;
+    font-size: 18px;
+    color: #5d4e37;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+/* Vintage Buttons - better spacing in taller letter */
+.vintage-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 30px 0;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.vintage-btn {
+    background: 
+        linear-gradient(135deg, #d4c4a8 0%, #c4a574 100%);
+    border: 2px solid #8b7355;
+    color: #5d4e37;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-family: 'Crimson Text', serif;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.vintage-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.vintage-btn:hover {
+    background: linear-gradient(135deg, #e2d4b8 0%, #d4b584 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.vintage-btn:hover::before {
+    left: 100%;
+}
+
+/* Message Display - larger in expanded letter */
+.vintage-message-box {
+    background: rgba(244, 241, 232, 0.7);
+    border: 2px solid #d4c4a8;
+    border-radius: 12px;
+    padding: 32px;
+    margin: 30px 0;
+    min-height: 120px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vintage-message {
+    font-family: 'Crimson Text', serif;
+    font-size: 20px;
+    color: #5d4e37;
+    line-height: 1.8;
+    font-style: italic;
+    text-align: center;
+}
+
+/* Letter Signature - better spacing */
+.letter-signature {
+    margin-top: 60px;
+    text-align: right;
+}
+
+.signature-text {
+    font-family: 'Crimson Text', serif;
+    font-size: 16px;
+    color: #8b7355;
+    font-style: italic;
+    margin-bottom: 8px;
+}
+
+.signature-name {
+    font-family: 'Dancing Script', cursive;
+    font-size: 28px;
+    color: #5d4e37;
+    font-weight: 600;
+}
+
+/* Vintage Form - larger in expanded letter */
+.vintage-form {
+    margin: 30px 0;
+}
+
+.vintage-textarea {
+    width: 100%;
+    min-height: 160px;
+    background: rgba(244, 241, 232, 0.7);
+    border: 2px solid #d4c4a8;
+    border-radius: 8px;
+    padding: 20px;
+    font-family: 'Crimson Text', serif;
+    font-size: 17px;
+    color: #5d4e37;
+    line-height: 1.7;
+    resize: vertical;
+    margin-bottom: 25px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.vintage-textarea:focus {
+    outline: none;
+    border-color: #8b7355;
+    box-shadow: 
+        inset 0 2px 4px rgba(0, 0, 0, 0.1),
+        0 0 8px rgba(139, 115, 85, 0.3);
+}
+
+.vintage-textarea::placeholder {
+    color: #a68b5b;
+    font-style: italic;
+}
+
+/* Open Button */
+.vintage-open-btn {
+    position: absolute;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    background: 
+        linear-gradient(135deg, #8b7355 0%, #6d5a43 100%);
+    border: none;
+    color: #f4f1e8;
+    padding: 16px 32px;
+    border-radius: 30px;
+    font-family: 'Crimson Text', serif;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    z-index: 6;
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 8px 16px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.vintage-open-btn:hover {
+    background: linear-gradient(135deg, #9d8465 0%, #7d6753 100%);
+    transform: translateX(-50%) translateY(-2px);
+    box-shadow: 
+        0 12px 24px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .vintage-envelope {
+        width: 95vw;
+        max-width: 480px;
+        height: 320px;
+        transform: rotate(0deg);
+    }
+    
+    .vintage-envelope.letter-opened {
+        height: 90vh;
+        width: 95vw;
+        max-height: 800px;
+    }
+    
+    .vintage-letter-content {
+        padding: 40px 25px 25px 25px;
+    }
+    
+    .vintage-letter-content.letter-opened {
+        padding: 60px 30px 40px 30px;
+    }
+    
+    .letter-greeting {
+        font-size: 24px;
+    }
+    
+    .letter-text, .letter-question {
+        font-size: 16px;
+    }
+    
+    .vintage-message {
+        font-size: 18px;
+    }
+    
+    .address-section {
+        left: 30px;
+        top: 100px;
+    }
+    
+    .postal-elements {
+        top: 15px;
+        right: 15px;
+        transform: scale(0.8);
+    }
+    
+    .vintage-buttons {
+        gap: 14px;
+        margin: 25px 0;
+    }
+    
+    .vintage-btn {
+        font-size: 15px;
+        padding: 12px 20px;
+    }
+    
+    .vintage-textarea {
+        min-height: 140px;
+        font-size: 16px;
+    }
+    
+    .letter-step {
+        min-height: 400px;
+    }
+}
+
+/* Mobile PWA specific styles */
+@media (max-width: 480px) {
+    body {
+        overflow-x: hidden;
+    }
+    
+    .vintage-envelope {
+        width: 98vw;
+        height: 280px;
+    }
+    
+    .vintage-envelope.letter-opened {
+        height: 85vh;
+        width: 98vw;
+    }
+    
+    .vintage-letter-content.letter-opened {
+        padding: 40px 20px 30px 20px;
+    }
+    
+    .letter-greeting {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    
+    .vintage-message-box {
+        padding: 20px;
+        margin: 20px 0;
+    }
+    
+    .vintage-buttons {
+        max-width: 280px;
+    }
+    
+    .vintage-btn {
+        font-size: 14px;
+        padding: 10px 16px;
+    }
+    
+    .postal-elements {
+        transform: scale(0.7);
+    }
+    
+    .address-section {
+        left: 20px;
+        top: 80px;
+    }
+    
+    .address-name {
+        font-size: 18px;
+    }
+    
+    .address-line {
+        font-size: 14px;
+    }
+}
+
+/* PWA Fullscreen styles */
+@media (display-mode: standalone) {
+    body {
+        background: linear-gradient(135deg, #f4f1e8 0%, #e8dcc6 100%);
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+    
+    .vintage-envelope {
+        margin-top: 20px;
+    }
+}
+
+/* Touch-friendly interactions */
+@media (hover: none) and (pointer: coarse) {
+    .vintage-btn:hover {
+        transform: none;
+        background: linear-gradient(135deg, #d4c4a8 0%, #c4a574 100%);
+    }
+    
+    .vintage-btn:active {
+        transform: scale(0.98);
+        background: linear-gradient(135deg, #e2d4b8 0%, #d4b584 100%);
+    }
+    
+    .vintage-open-btn:hover {
+        transform: translateX(-50%);
+        background: linear-gradient(135deg, #8b7355 0%, #6d5a43 100%);
+    }
+    
+    .vintage-open-btn:active {
+        transform: translateX(-50%) scale(0.98);
+        background: linear-gradient(135deg, #9d8465 0%, #7d6753 100%);
+    }
+}
+
+.flap-hidden, .address-hidden, .postal-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.7s;
+}

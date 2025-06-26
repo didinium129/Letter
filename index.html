@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<title>A Letter for Kiara ✉️</title>
+	
+	<!-- PWA Manifest -->
+	<link rel="manifest" href="manifest.json">
+	
+	<!-- iOS PWA Support -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="default">
+	<meta name="apple-mobile-web-app-title" content="Letter4Kiara">
+	<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%238b7355' d='M64 112c-8.8 0-16 7.2-16 16v22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16H64zM48 212.2V384c0 8.8 7.2 16 16 16H448c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64H448c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z'/%3E%3C/svg%3E">
+	
+	<!-- Theme colors -->
+	<meta name="theme-color" content="#8b7355">
+	<meta name="msapplication-TileColor" content="#f4f1e8">
+	
+	<!-- Styles and Fonts -->
+	<link rel="stylesheet" href="styles.css">
+	<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+	<!-- Vintage Background -->
+	<div class="vintage-background"></div>
+	
+	<!-- Main Envelope -->
+	<div class="vintage-envelope" id="envelope">
+		<!-- Postal Elements -->
+		<div class="postal-elements">
+			<div class="postmark">
+				<div class="postmark-inner">
+					<div class="postmark-date">DEC 2024</div>
+					<div class="postmark-text">LOVE MAIL</div>
+				</div>
+			</div>
+			<div class="stamp">
+				<div class="stamp-inner">
+					<div class="stamp-heart">♥</div>
+					<div class="stamp-value">FOREVER</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Address Section -->
+		<div class="address-section">
+			<div class="address-to">
+				<div class="address-label">To:</div>
+				<div class="address-name">Miss Kiara</div>
+				<div class="address-line">The Most Beautiful Girl</div>
+				<div class="address-line">In My World ♥</div>
+			</div>
+		</div>
+
+		<!-- Envelope Flap -->
+		<div class="vintage-flap" id="flap">
+			<div class="wax-seal" id="seal">
+				<div class="seal-heart">♥</div>
+			</div>
+		</div>
+
+		<!-- Letter Content -->
+		<div class="vintage-letter-content" id="letter-content">
+			<!-- Step 1: Greeting -->
+			<div id="step1" class="letter-step active">
+				<div class="letter-header">
+					<div class="letter-date">December 2024</div>
+				</div>
+				<div class="letter-body">
+					<h1 class="letter-greeting">My Dearest Kiara,</h1>
+					<p class="letter-text">I hope this letter finds you in good spirits...</p>
+					<p class="letter-question">How are you feeling today, my love?</p>
+					<div class="vintage-buttons">
+						<button id="fine-btn" class="vintage-btn">I'm feeling wonderful ✨</button>
+						<button id="not-fine-btn" class="vintage-btn">I could use some comfort 💕</button>
+					</div>
+				</div>
+				<div class="letter-signature">
+					<p class="signature-text">With all my love,</p>
+					<p class="signature-name">Dav</p>
+				</div>
+			</div>
+
+			<!-- Step 2: Message Selection -->
+			<div id="step2" class="letter-step">
+				<div class="letter-header">
+					<div class="letter-date">December 2024</div>
+				</div>
+				<div class="letter-body">
+					<h2 class="letter-greeting" id="step2-title">What would warm your heart today?</h2>
+					<div class="vintage-buttons">
+						<button id="comfort-btn" class="vintage-btn">Sweet Comfort 🌸</button>
+						<button id="complement-btn" class="vintage-btn">Loving Words 💐</button>
+						<button id="advice-btn" class="vintage-btn">Gentle Wisdom 🌿</button>
+						<button id="message-btn" class="vintage-btn">Write to Me 💌</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- Step 3: Message Display -->
+			<div id="step3" class="letter-step">
+				<div class="letter-header">
+					<div class="letter-date">December 2024</div>
+				</div>
+				<div class="letter-body">
+					<div class="vintage-message-box">
+						<p id="message-text" class="vintage-message"></p>
+					</div>
+					<div class="vintage-buttons">
+						<button id="another-btn" class="vintage-btn">Another message</button>
+						<button id="back-btn" class="vintage-btn">Go back</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- Step 4: Write Message -->
+			<div id="step4" class="letter-step">
+				<div class="letter-header">
+					<div class="letter-date">December 2024</div>
+				</div>
+				<div class="letter-body">
+					<h2 class="letter-greeting">Write me a letter...</h2>
+					<div class="vintage-form">
+						<textarea id="user-message" class="vintage-textarea" placeholder="My dearest Dav..."></textarea>
+						<div class="vintage-buttons">
+							<button id="send-btn" class="vintage-btn">Send Letter 💌</button>
+							<button id="cancel-btn" class="vintage-btn">Maybe later</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Open Button -->
+		<button id="open-btn" class="vintage-open-btn">Open Letter</button>
+	</div>
+
+	<script src="script.js"></script>
+	
+	<!-- PWA Installation Script -->
+	<script>
+		// Register service worker
+		if ('serviceWorker' in navigator) {
+			window.addEventListener('load', () => {
+				navigator.serviceWorker.register('./sw.js')
+					.then((registration) => {
+						console.log('SW registered: ', registration);
+					})
+					.catch((registrationError) => {
+						console.log('SW registration failed: ', registrationError);
+					});
+			});
+		}
+	</script>
+</body>
+</html>
